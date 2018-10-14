@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://www.gnu.org/licenses/lgpl.txt</licenseUrl>
+    <projectUrl>https://www.vpksoft.net/2015-03-31-13-33-28/libraries/langlib-multidb</projectUrl>
+    <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial NuGet release.</releaseNotes>
+    <copyright>Copyright © VPKSoft 2018</copyright>
+    <tags>LangLibMultiDB LangLib VPKSoft Localization database</tags>
+  </metadata>
+  <files>
+    <!-- Add files from an arbitrary folder that's not necessarily in the project -->
+    <file src="..\DBLocalization\bin\Release\DBLocalization.exe" target="content" />
+    <file src="..\SecureDatabaseSetting\bin\Release\SecureDatabaseSetting.exe" target="content" />
+  </files>
+</package>
