@@ -3,7 +3,7 @@
 LangLib
 
 A program and library for application localization.
-Copyright (C) 2015 VPKSoft, Petteri Kautonen
+Copyright (C) 2019 VPKSoft, Petteri Kautonen
 
 Contact: vpksoft@vpksoft.net
 
@@ -70,7 +70,7 @@ namespace VPKSoft.LangLib
             base(form)
         {
             this.appType = appType;
-            thisForm = form;
+            ThisForm = form;
             // int the data dir with default
             dataDir = Paths.GetAppSettingsFolder(appType);
         }
@@ -91,7 +91,7 @@ namespace VPKSoft.LangLib
         {
             this.appType = appType;
             this.useUids = useUids;
-            thisWindow = window;
+            ThisWindow = window;
             // int the data dir with default
             dataDir = Paths.GetAppSettingsFolder(appType);
         }        
