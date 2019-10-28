@@ -10,8 +10,8 @@
     <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added possibility to launch the DBLocalization application (using SQLite) directly from the host application.</releaseNotes>
-    <copyright>Copyright © VPKSoft 2018</copyright>
+    <releaseNotes>Updated System.Data.SQLite.Core dependency and other dependecies.</releaseNotes>
+    <copyright>Copyright © VPKSoft 2019</copyright>
     <tags>LangLibMultiDB LangLib VPKSoft Localization database</tags>
     <license type="expression">LGPL-3.0-or-later</license>
   </metadata>
