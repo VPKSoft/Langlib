@@ -10,6 +10,9 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
+  Major: '1'
+  Minor: '0'
+  Patch: '0'
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
@@ -36,5 +39,8 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/LangLib.csproj'
-    versioningScheme: 'byBuildNumber'
     includeSymbols: true
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
