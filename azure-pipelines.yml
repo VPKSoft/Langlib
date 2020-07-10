@@ -39,4 +39,4 @@ steps:
   inputs:
     command: 'pack'
     arguments: -Prop Configuration=Release
-    packagesToPack: 'LangLib/LangLib.nuspec'
+    packagesToPack: 'D:/a/1/s/LangLib/LangLib.nuspec'
