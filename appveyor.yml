@@ -37,6 +37,8 @@ after_build:
 
     nuget.exe push %nugpkg% %nuget_apikey% -SkipDuplicate -Source https://api.nuget.org/v3/index.json
 
+    iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
+
     appveyor-tools\secure-file -decrypt C:\projects\langlib\LangLib\nuget.config.enc -secret %secret_file_pass% -salt %secret_file_salt%
 
     nuget push %nugpkg% -Source "GitHub" -SkipDuplicate
