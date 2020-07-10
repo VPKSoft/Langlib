@@ -38,9 +38,4 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/LangLib.csproj'
-    includeSymbols: true
-    versioningScheme: byPrereleaseNumber
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
+    packagesToPack: 'LangLib/LangLib.nupkg'
