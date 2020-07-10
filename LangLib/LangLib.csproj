@@ -17,6 +17,7 @@
     <RootNamespace>VPKSoft</RootNamespace>
     <AssemblyName>VPKSoft.LangLibMultiDB</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RepositoryUrl>https://github.com/VPKSoft/Langlib</RepositoryUrl>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
