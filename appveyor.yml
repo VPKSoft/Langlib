@@ -41,4 +41,6 @@ after_build:
 
     appveyor-tools\secure-file -decrypt C:\projects\langlib\LangLib\nuget.config.enc -secret %secret_file_pass% -salt %secret_file_salt%
 
+    copy "C:\projects\langlib\LangLib\nuget.config" .\nuget.config
+
     nuget push %nugpkg% -Source "GitHub" -SkipDuplicate
