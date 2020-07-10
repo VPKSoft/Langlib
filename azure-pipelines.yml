@@ -38,4 +38,5 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
-    packagesToPack: 'LangLib/LangLib.nupkg'
+    arguments: -Prop Configuration=Release
+    packagesToPack: 'LangLib/LangLib.nuspec'
