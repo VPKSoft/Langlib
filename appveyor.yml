@@ -1,5 +1,14 @@
-version: 1.1.{build}
+version: 1.1.0.{build}
 configuration: Release
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  version_prefix: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 environment:
   nuget_apikey:
     secure: a0bRftuL7ILnzHJcFrHDWMUWVC+Aloo9HUQL3WjDJcGDObsjaGCmH/xYj9qUt06a
