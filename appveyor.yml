@@ -1,4 +1,6 @@
 version: 1.1.0.{build}
+pull_requests:
+  do_not_increment_build_number: true
 configuration: Release
 assembly_info:
   patch: true
@@ -41,7 +43,7 @@ after_build:
 
     nuget.exe sign %nugpkg% -CertificatePath "VPKSoft.pfx" -Timestamper http://timestamp.comodoca.com -CertificatePassword %cspwd% > nul 2>&1
 
-    nuget.exe push %nugpkg% %nuget_apikey% -SkipDuplicate -Source https://api.nuget.org/v3/index.json
+    if [%APPVEYOR_PULL_REQUEST_NUMBER%] == [] nuget.exe push %nugpkg% %nuget_apikey% -SkipDuplicate -Source https://api.nuget.org/v3/index.json
 
     powershell -command "iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))"
 
@@ -49,4 +51,4 @@ after_build:
 
     copy "C:\projects\langlib\LangLib\nuget.config" .\nuget.config
 
-    if [%APPVEYOR_PULL_REQUEST_NUMBER%] == [] push %nugpkg% -Source "GitHub" -SkipDuplicate
+    if [%APPVEYOR_PULL_REQUEST_NUMBER%] == [] nuget.exe push %nugpkg% -Source "GitHub" -SkipDuplicate
