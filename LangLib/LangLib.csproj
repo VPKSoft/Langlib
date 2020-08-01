@@ -82,7 +82,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Google.Protobuf">
-      <Version>3.12.3</Version>
+      <Version>3.12.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
       <Version>1.1.1</Version>
