@@ -41,7 +41,7 @@ after_build:
 
     echo NuGet package name: %nugpkg%
 
-    nuget.exe sign %nugpkg% -CertificatePath "VPKSoft.pfx" -Timestamper http://timestamp.comodoca.com -CertificatePassword %cspwd% > nul
+    if [%APPVEYOR_PULL_REQUEST_NUMBER%] == [] nuget.exe sign %nugpkg% -CertificatePath "VPKSoft.pfx" -Timestamper http://timestamp.comodoca.com -CertificatePassword %cspwd% > nul
 
     if [%APPVEYOR_PULL_REQUEST_NUMBER%] == [] nuget.exe push %nugpkg% %nuget_apikey% -SkipDuplicate -Source https://api.nuget.org/v3/index.json
 
