@@ -11,10 +11,7 @@
        - checkout
        - run: msbuild LangLib/LangLib.csproj /t:restore
        - run: msbuild LangLib/LangLib.csproj /p:Configuration=Release
-       
-   nuget:
-     steps:
-      - run:
+       - run:
           name: Push to NuGet
           command: |
             dotnet pack --output LangLib/LangLib.csproj --configuration Release          
