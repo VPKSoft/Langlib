@@ -14,4 +14,4 @@
        - run:
           name: Push to NuGet
           command: |
-            dotnet pack --output LangLib/LangLib.csproj --configuration Release          
+            msbuild LangLib/LangLib.csproj /p:Configuration=Release /t:pack
