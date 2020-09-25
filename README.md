@@ -3,7 +3,7 @@ LangLib is a software library to localize .NET applications (WinForms and WPF). 
 
 I wouldn't count on the WPF support at least for the time being.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/ga4keyxw9wg39cwp?svg=true)](https://ci.appveyor.com/project/VPKSoft/langlib) [![Nuget](https://img.shields.io/nuget/v/VPKSoft.LangLib)](https://www.nuget.org/packages/VPKSoft.LangLib/)
+[![VPKSoft](https://circleci.com/gh/VPKSoft/Langlib.svg?style=shield)](https://app.circleci.com/pipelines/github/VPKSoft/Langlib) [![Nuget](https://img.shields.io/nuget/v/VPKSoft.LangLib)](https://www.nuget.org/packages/VPKSoft.LangLib/)
 
 * [JetBrains](https://www.jetbrains.com/?from=Langlib) for their open source license(s).
 
