@@ -15,3 +15,5 @@
           name: Push to NuGet
           command: |
             dotnet pack LangLib/LangLib.csproj -c:Release
+            NuGet-Push.ps1
+            

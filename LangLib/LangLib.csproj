@@ -31,6 +31,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>vpksoft_logo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -49,9 +51,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="DBLangEngineWinforms.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="DBLangEngineWinforms.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BouncyCastle" Version="1.8.6.1" />
