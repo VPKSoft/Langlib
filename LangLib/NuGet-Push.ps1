@@ -10,10 +10,10 @@ Write-Output "Download file:  $download_url ..."
 Write-Output "Download done."
 
 # create the digital signature..
-CryptEnvVar.exe -s $Env:SECRET_KEY -e "CERT_1;CERT_2;CERT_3" > vpksoft.pfx
+LangLib/CryptEnvVar.exe -s $Env:SECRET_KEY -e "CERT_1;CERT_2;CERT_3" > vpksoft.pfx
 
 # sign and push the NuGet packages..
-$files = dir -r -Name -Filter *LangLibMultiDB*.nupkg # use the mask to discard possible third party packages..
+$files = dir -r -Name -Filter *.nupkg # use the mask to discard possible third party packages..
 for ($i = 0; $i -lt $files.Count; $i++) 
 { 
     # sign the NuGet packages.
