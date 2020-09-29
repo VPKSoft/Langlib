@@ -10,9 +10,7 @@ Write-Output "Download file:  $download_url ..."
 Write-Output "Download done."
 
 # create the digital signature..
-$args = @("-s", $Env:SECRET_KEY, "e", "CERT_1;CERT_2;CERT_3", "-f", "vpksoft.pfx")
-
-Write-Output $args
+$args = @("-s", $Env:SECRET_KEY, "e", "CERT_1;CERT_2;CERT_3", "-f", "vpksoft.pfx", "-w", "80")
 
 & "LangLib/CryptEnvVar.exe" $args
 
