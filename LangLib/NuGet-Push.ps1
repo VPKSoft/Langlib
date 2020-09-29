@@ -11,7 +11,10 @@ Write-Output "Download done."
 
 # create the digital signature..
 $args = @("-s", $Env:SECRET_KEY, "e", "CERT_1;CERT_2;CERT_3", "-f", "vpksoft.pfx")
-&"LangLib/CryptEnvVar.exe" $args
+
+Write-Output $args
+
+& "LangLib/CryptEnvVar.exe" $args
 
 # sign and push the NuGet packages..
 $files = dir -r -Name -Filter *.nupkg # use the mask to discard possible third party packages..
