@@ -6,13 +6,14 @@ $output_file = "CryptEnvVar.exe"
 $download_url = "https://www.vpksoft.net/toolset/CryptEnvVar.exe"
 
 Write-Output "Download file:  $download_url ..."
+Remove-Item $output_file
 (New-Object System.Net.WebClient).DownloadFile($download_url, $output_file)
 Write-Output "Download done."
 
 # create the digital signature..
 $args = @("-s", $Env:SECRET_KEY, "e", "CERT_1;CERT_2;CERT_3", "-f", "vpksoft.pfx", "-w", "80")
 
-& "LangLib/CryptEnvVar.exe" $args
+& "LangLib\CryptEnvVar.exe" $args
 
 # sign and push the NuGet packages..
 $files = dir -r -Name -Filter *.nupkg # use the mask to discard possible third party packages..
