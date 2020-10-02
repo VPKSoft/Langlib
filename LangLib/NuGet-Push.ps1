@@ -1,7 +1,7 @@
 ﻿
 Write-Output "Init NuGet push..."
 
-$output_file = "CryptEnvVar.exe"
+$output_file = "LangLib\CryptEnvVar.exe"
 
 $download_url = "https://www.vpksoft.net/toolset/CryptEnvVar.exe"
 
