@@ -11,12 +11,12 @@ Remove-Item $output_file
 Write-Output "Download done."
 
 # create the digital signature..
-$args = @("-s", $Env:SECRET_KEY, "e", "CERT_1;CERT_2;CERT_3", "-f", "C:\vpksoft.pfx", "-w", "80")
+$args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3", "-f", "C:\vpksoft.pfx", "-w", "80")
 
 & "LangLib\CryptEnvVar.exe" $args
 
 # sign and push the NuGet packages..
-$files = Get-ChildItem "C:\Users\circleci\project\LangLib\" -r -Filter *LangLib*.nupkg # use the mask to discard possible third party packages..
+$files = Get-ChildItem $Env:CIRCLE_WORKING_DIRECTORY -r -Filter *LangLib*.nupkg # use the mask to discard possible third party packages..
 for ($i = 0; $i -lt $files.Count; $i++) 
 { 
     $file = $files[$i].FullName
