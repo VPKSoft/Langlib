@@ -5,6 +5,7 @@
 
  jobs:
    build:
+	 context: Common
      executor: win/default     
     
      steps:
