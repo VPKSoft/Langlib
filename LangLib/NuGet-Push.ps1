@@ -11,11 +11,9 @@ Remove-Item $output_file
 Write-Output "Download done."
 
 # create the digital signature..
-$args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3", "-f", "C:\vpksoft.pfx", "-w", "80")
+$args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3", "-f", "C:\vpksoft.pfx", "-w", "80", "-i", "-v")
 
 & "LangLib\CryptEnvVar.exe" $args
-
-Write-Output (-join("Cert PW: ", $Env:SECRET_KEY))
 
 # sign and push the NuGet packages..
 $files = Get-ChildItem $Env:CIRCLE_WORKING_DIRECTORY -r -Filter *LangLib*.nupkg # use the mask to discard possible third party packages..
