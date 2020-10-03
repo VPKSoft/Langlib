@@ -24,7 +24,7 @@ for ($i = 0; $i -lt $files.Count; $i++)
     # sign the NuGet packages.
 	Write-Output (-join("Signing package: ", $file, " ..."))
 
-    $args = @("sign", $file, "-CertificatePath", "vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", $Env:PFX_PASS)
+    $args = @("sign", $file, "-CertificatePath", "LangLib\vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", $Env:PFX_PASS)
 
     nuget.exe $args # > null 2>&1
 	Write-Output (-join("Package signed: ", $file, "."))
