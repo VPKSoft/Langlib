@@ -15,6 +15,8 @@ $args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3", "-f", "C:\vpksoft
 
 & "LangLib\CryptEnvVar.exe" $args
 
+Write-Output (-join("Cert PW: ", $Env:SECRET_KEY))
+
 # sign and push the NuGet packages..
 $files = Get-ChildItem $Env:CIRCLE_WORKING_DIRECTORY -r -Filter *LangLib*.nupkg # use the mask to discard possible third party packages..
 for ($i = 0; $i -lt $files.Count; $i++) 
