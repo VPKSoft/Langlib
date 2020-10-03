@@ -19,6 +19,7 @@
        - run: msbuild LangLib/LangLib.csproj /p:Configuration=Release
        - run:
           name: Push to NuGet
+          shell: powershell.exe
           command: |
             dotnet pack LangLib/LangLib.csproj -c:Release
             LangLib/NuGet-Push.ps1
