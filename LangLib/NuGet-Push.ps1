@@ -21,16 +21,21 @@ for ($i = 0; $i -lt $files.Count; $i++)
 { 
     # sign the NuGet packages.
 	Write-Output ("Signing package:" + $files[$i] + " ...")
-    nuget.exe sign $files[$i] -CertificatePath "vpksoft.pfx" -Timestamper "http://timestamp.comodoca.com" -CertificatePassword $Env:PFX_PASS > null 2>&1
-	Write-Output ("Package signed: " + $files[$i] + ".")
+
+    $args = @("sign", $files[$i], "-CertificatePath", "vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", "$Env:PFX_PASS")
+
+    nuget.exe $args > null 2>&1
+	Write-Output @("Package signed: ", $files[$i], ".")
 
     # push the NuGet packges..
     #$nuget_api = "https://api.nuget.org/v3/index.json"
 
     $nuget_api = "https://apiint.nugettest.org/v3/index.json"
-	Write-Output ("Pushing NuGet:" + $files[$i] + " ...")
-    nuget.exe push $files[$i] $Env:NUGET_TEST_APIKEY -Source $nuget_api -SkipDuplicate
-	Write-Output ("Pushing done:" + $files[$i] + ".")
+	Write-Output @("Pushing NuGet:", $files[$i], " ...")
+
+    $args = @("push", $files[$i], $Env:NUGET_TEST_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
+    nuget.exe $args
+	Write-Output @("Pushing done:", $files[$i], ".")
 }
 
 Write-Output "NuGet push finished."
