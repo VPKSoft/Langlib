@@ -3,10 +3,10 @@
  orbs:
   win: circleci/windows@2.2.0
 
-workflows:
-  primary:
-    jobs:
-      - build:
+ workflows:
+   primary:
+     jobs:
+       - build:
           context: Common
 
  jobs:
