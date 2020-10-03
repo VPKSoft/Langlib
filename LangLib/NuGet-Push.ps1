@@ -11,7 +11,7 @@ Remove-Item $output_file
 Write-Output "Download done."
 
 # create the digital signature..
-$args = @("-s", $Env:SECRET_KEY, "e", "CERT_1;CERT_2;CERT_3", "-f", "vpksoft.pfx", "-w", "80")
+$args = @("-s", $Env:SECRET_KEY, "e", "CERT_1;CERT_2;CERT_3", "-f", "C:\vpksoft.pfx", "-w", "80")
 
 & "LangLib\CryptEnvVar.exe" $args
 
@@ -24,7 +24,7 @@ for ($i = 0; $i -lt $files.Count; $i++)
     # sign the NuGet packages.
 	Write-Output (-join("Signing package: ", $file, " ..."))
 
-    $args = @("sign", $file, "-CertificatePath", "LangLib\vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", $Env:PFX_PASS)
+    $args = @("sign", $file, "-CertificatePath", "C:\vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", $Env:PFX_PASS)
 
     nuget.exe $args # > null 2>&1
 	Write-Output (-join("Package signed: ", $file, "."))
