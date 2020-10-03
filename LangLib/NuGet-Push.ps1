@@ -11,7 +11,7 @@ Remove-Item $output_file
 Write-Output "Download done."
 
 # create the digital signature..
-$args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3", "-f", "C:\vpksoft.pfx", "-w", "80", "-i", "-v")
+$args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_6;CERT_7;CERT_8", "-f", "C:\vpksoft.pfx", "-w", "80", "-i", "-v")
 
 & "LangLib\CryptEnvVar.exe" $args
 
