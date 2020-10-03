@@ -30,9 +30,9 @@ for ($i = 0; $i -lt $files.Count; $i++)
 	Write-Output (-join("Package signed: ", $file, "."))
 
     # push the NuGet packges..
-    #$nuget_api = "https://api.nuget.org/v3/index.json"
+    $nuget_api = "https://api.nuget.org/v3/index.json"
 
-    $nuget_api = "https://apiint.nugettest.org/v3/index.json"
+    #$nuget_api = "https://apiint.nugettest.org/v3/index.json"
 	Write-Output (-join("Pushing NuGet:", $file, " ..."))
 
     $args = @("push", $file, $Env:NUGET_TEST_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
