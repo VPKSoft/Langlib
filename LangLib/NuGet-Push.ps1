@@ -15,6 +15,8 @@ $args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_
 
 & "LangLib\CryptEnvVar.exe" $args
 
+Import-PfxCertificate -FilePath "C:\vpksoft.pfx" -CertStoreLocation Cert:\LocalMachine\My -Password $Env:PFX_PASS
+
 # sign and push the NuGet packages..
 if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
 {
@@ -32,12 +34,13 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
 	    Write-Output (-join("Package signed: ", $file, "."))
 
         # push the NuGet packges..
-        $nuget_api = "https://api.nuget.org/v3/index.json"
+        #$nuget_api = "https://api.nuget.org/v3/index.json"
+        $nuget_api = "https://apiint.nugettest.org/v3/index.json"
 
-        #$nuget_api = "https://apiint.nugettest.org/v3/index.json"
 	    Write-Output (-join("Pushing NuGet:", $file, " ..."))
 
-        $args = @("push", $file, $Env:NUGET_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
+#        $args = @("push", $file, $Env:NUGET_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
+        $args = @("push", $file, $Env:NUGET_TEST_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
         nuget.exe $args
 	    Write-Output (-join("Pushing done:", $file, "."))
     }
