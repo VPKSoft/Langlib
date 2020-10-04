@@ -15,7 +15,9 @@ $args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_
 
 & "LangLib\CryptEnvVar.exe" $args
 
-Import-PfxCertificate -FilePath "C:\vpksoft.pfx" -CertStoreLocation Cert:\LocalMachine\My -Password $Env:PFX_PASS
+$certpw=ConvertTo-SecureString $Env:PFX_PASS –asplaintext –force 
+
+Import-PfxCertificate -FilePath "C:\vpksoft.pfx" -CertStoreLocation Cert:\LocalMachine\My -Password $certpw
 
 # sign and push the NuGet packages..
 if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
