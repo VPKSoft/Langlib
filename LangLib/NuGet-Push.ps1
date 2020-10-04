@@ -12,8 +12,10 @@ Write-Output "Download done."
 
 # create the digital signature..
 $args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_6;CERT_7;CERT_8", "-f", "C:\vpksoft.pfx", "-w", "80", "-i", "-v")
-
 & "LangLib\CryptEnvVar.exe" $args
+
+#create nuget.config file..
+$args = @("-s", $Env:SECRET_KEY, "-e", "NUGET_CONFIG", "-f", "nuget.config", "-w", "80", "-i", "-v")
 
 # register the certificate to the CI image..
 $certpw=ConvertTo-SecureString $Env:PFX_PASS –asplaintext –force 
@@ -38,12 +40,19 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
         # push the NuGet packges..
         #$nuget_api = "https://api.nuget.org/v3/index.json"
         $nuget_api = "https://apiint.nugettest.org/v3/index.json"
+        $nuget_packages_api = "https://nuget.pkg.github.com/VPKSoft/index.json"
 
 	    Write-Output (-join("Pushing NuGet:", $file, " ..."))
-
+        
+        # To nuget.org..
 #        $args = @("push", $file, $Env:NUGET_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
         $args = @("push", $file, $Env:NUGET_TEST_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
         nuget.exe $args
+
+        # To GitHub packages..
+        $args = @("push", $file, $Env:NUGET_PACKAGES_API, "-Source", $nuget_packages_api, "-SkipDuplicate")
+        nuget.exe $args
+
 	    Write-Output (-join("Pushing done:", $file, "."))
     }
 }

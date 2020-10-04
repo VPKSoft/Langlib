@@ -9,9 +9,9 @@
     <Product>VPKSoft.LangLibMultiDB</Product>
     <Description>A Library for storing appliation localization data into a database</Description>
     <Copyright>Copyright © VPKSoft 2020</Copyright>
-    <Version>1.1.0.12</Version>
-    <AssemblyVersion>1.1.0.12</AssemblyVersion>
-    <FileVersion>1.1.0.12</FileVersion>
+    <Version>1.1.1</Version>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
     <DocumentationFile>bin\$(Configuration)\VPKSoft.LangLibMultiDB.xml</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>VPKSoft</Authors>
