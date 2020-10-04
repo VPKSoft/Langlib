@@ -15,9 +15,9 @@ $args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_
 
 & "LangLib\CryptEnvVar.exe" $args
 
+# register the certificate to the CI image..
 $certpw=ConvertTo-SecureString $Env:PFX_PASS –asplaintext –force 
-
-Import-PfxCertificate -FilePath "C:\vpksoft.pfx" -CertStoreLocation Cert:\LocalMachine\My -Password $certpw
+Import-PfxCertificate -FilePath "C:\vpksoft.pfx" -CertStoreLocation Cert:\LocalMachine\My -Password $certpw | Out-Null
 
 # sign and push the NuGet packages..
 if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
