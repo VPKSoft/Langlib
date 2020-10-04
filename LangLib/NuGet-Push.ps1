@@ -16,6 +16,7 @@ $args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_
 
 #create nuget.config file..
 $args = @("-s", $Env:SECRET_KEY, "-e", "NUGET_CONFIG", "-f", "nuget.config", "-w", "80", "-i", "-v")
+& "LangLib\CryptEnvVar.exe" $args
 
 # register the certificate to the CI image..
 $certpw=ConvertTo-SecureString $Env:PFX_PASS –asplaintext –force 
