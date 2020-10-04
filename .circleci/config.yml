@@ -17,10 +17,10 @@
        - checkout
        - run: msbuild LangLib/LangLib.csproj /t:restore
        - run: msbuild LangLib/LangLib.csproj /p:Configuration=Release
-       - run: dotnet tool install --global PowerShell
+# No need for bleeding edge       - run: dotnet tool install --global PowerShell
        - run: 
           name: Push to NuGet
           command: |
             dotnet pack LangLib/LangLib.csproj -c:Release
-            pwsh LangLib/NuGet-Push.ps1
+            LangLib/NuGet-Push.ps1
             
