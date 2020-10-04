@@ -10,13 +10,17 @@ Remove-Item $output_file
 (New-Object System.Net.WebClient).DownloadFile($download_url, $output_file)
 Write-Output "Download done."
 
+# application parameters..
+$application = "LangLib"
+$environment_cryptor = "CryptEnvVar.exe"
+
 # create the digital signature..
 $args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_6;CERT_7;CERT_8", "-f", "C:\vpksoft.pfx", "-w", "80", "-i", "-v")
-& "LangLib\CryptEnvVar.exe" $args
+& (-join($application, "\", $environment_cryptor)) $args
 
 #create nuget.config file..
 $args = @("-s", $Env:SECRET_KEY, "-e", "NUGET_CONFIG", "-f", "nuget.config", "-w", "80", "-i", "-v")
-& "LangLib\CryptEnvVar.exe" $args
+& (-join($application, "\", $environment_cryptor)) $args
 
 # register the certificate to the CI image..
 $certpw=ConvertTo-SecureString $Env:PFX_PASS –asplaintext –force 
@@ -46,8 +50,8 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
 	    Write-Output (-join("Pushing NuGet:", $file, " ..."))
         
         # To nuget.org..
-#        $args = @("push", $file, $Env:NUGET_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
-        $args = @("push", $file, $Env:NUGET_TEST_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
+        $args = @("push", $file, $Env:NUGET_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
+        #$args = @("push", $file, $Env:NUGET_TEST_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
         nuget.exe $args
 
         # To GitHub packages..
@@ -56,10 +60,9 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
 
 	    Write-Output (-join("Pushing done:", $file, "."))
     }
+    Write-Output "NuGet push finished."
 }
 else
 {
     Write-Output (-join("PR detected, no package publish: ", $Env:CIRCLE_PR_NUMBER))
 }
-
-Write-Output "NuGet push finished."
