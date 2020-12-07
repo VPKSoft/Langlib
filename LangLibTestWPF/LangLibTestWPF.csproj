@@ -57,6 +57,6 @@
     <Resource Include="images\VPKSoftLogo_App.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="VPKSoft.Utils" Version="1.0.4.7" />
+    <PackageReference Include="VPKSoft.Utils" Version="1.0.5" />
   </ItemGroup>
 </Project>
