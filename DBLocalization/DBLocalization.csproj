@@ -144,7 +144,7 @@
     <PackageReference Include="BouncyCastle" Version="1.8.9" />
     <PackageReference Include="Google.Protobuf" Version="3.14.0" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" />
-    <PackageReference Include="MySql.Data" Version="8.0.22" />
+    <PackageReference Include="MySql.Data" Version="8.0.23" />
     <PackageReference Include="Npgsql" Version="5.0.1.1" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.7" />
     <PackageReference Include="System.Text.Json" Version="5.0.1" />
